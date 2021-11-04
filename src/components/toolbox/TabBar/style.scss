@@ -1,0 +1,46 @@
+.tabbar-zone {
+  padding: 30px;
+
+  .column-header {
+    display: block;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h4 {
+      font-size: 24;
+      margin-right: 30px;
+      float: left;
+    }
+    .filmSection-parents {
+      border: 1px solid black;
+      display: flex;
+      width: 700px;
+      height: 30px;
+      align-items: center;
+      border-radius: 50px;
+      text-align: center;
+      span {
+        display: inline-block;
+        width: 25%;
+        height: 100%;
+        cursor: pointer;
+        padding-top: 3px;
+        font-weight: 600;
+        color: black;
+        margin-right: 40px;
+      }
+
+      span.active {
+        background-color: #032541;
+        border-radius: 50px;
+        color: white;
+        a {
+          background: linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+  }
+}

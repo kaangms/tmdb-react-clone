@@ -1,0 +1,60 @@
+.movie-card-list {
+  display: table;
+  .movie-card {
+    float: left;
+    margin-right: 1.5rem;
+    width: 180px;
+    height: 400px;
+    position: relative;
+    //   border: 1px dotted red;
+    padding-left: 3px;
+    .movie-image {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .movie-title {
+      margin: 25px 0px 5px 0px;
+      font-size: 21px;
+      font-weight: 600;
+    }
+    .movie-title:hover {
+      color: rgb(1, 119, 210);
+    }
+    h6 {
+      font-size: 17px;
+      margin-bottom: 6px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    .movie-rating {
+      padding: 12px 0;
+      position: absolute;
+      bottom: 65px;
+      left: 12px;
+      align-content: center;
+      .CircularProgressbar {
+        // position: absolute;
+        height: 50px;
+        width: 50px;
+        display: block;
+      }
+    }
+
+    // .movie-rating::after {
+    //   content: "";
+    //   height: 10px;
+    //   width: 39px;
+    //   border-radius: 100%;
+    //   border: 3px solid gold;
+    //   color: white;
+    //   text-align: center;
+    //   padding: 40%;
+    //   display: block;
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    // }
+  }
+}
