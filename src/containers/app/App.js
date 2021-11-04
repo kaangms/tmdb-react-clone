@@ -1,6 +1,7 @@
 import HeaderBottom from "../../components/HeaderBottom";
 import MovieCard from "../../components/MovieCard";
 import Nav from "../../components/Nav";
+import React, { useEffect, useState } from "react";
 
 //TODO:Object yapısı servise göre güncellenecek html css çalışması için örnektir
 const filmSections = [

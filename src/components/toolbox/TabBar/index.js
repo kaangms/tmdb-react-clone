@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
-const TabBar = ({ filmSection, isSelected }) => {
+const TabBar = ({ tabNames, getMovies }) => {
+  const [tabNamesState, setTabNamesState] = useState({ tabNames });
+
+  // console.log(tabNamesState.columnName);
   return (
     <div className="tabbar-zone">
       <div className="column-header">
-        <h4>{filmSection.columnName}</h4>
+        <h4>{tabNames.columnName}</h4>
         <div className="filmSection-parents">
-          {filmSection.parents.map((parent) => (
+          {tabNames.parents.map((parent) => (
             <span
               //TODO:Aktif olan ayrı olarak tutulacak.Düzenlenecek kısım
               className={parent === "For Rent" ? "active" : "active-non"}

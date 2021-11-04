@@ -4,6 +4,8 @@ import TabBar from "../toolbox/TabBar";
 import "./style.scss";
 // import Background from "../../images/movie-card/moviecard.jpg";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import "react-circular-progressbar/dist/styles.css";
 
 const MovieCard = ({ filmSections }) => {
@@ -12,7 +14,7 @@ const MovieCard = ({ filmSections }) => {
     <div className="container">
       {filmSections.map((filmSection) => (
         <div>
-          <TabBar filmSection={filmSection} />
+          <TabBar tabNames={filmSection} />
           <div className="movie-card-list">
             {filmSection.films.map((film) => (
               <div class="movie-card">
@@ -35,6 +37,18 @@ const MovieCard = ({ filmSections }) => {
                       pathColor: RatingColor(parseInt(film.rating)),
                       trailColor: "transparent",
                     })}
+                  />
+                </div>
+                <div className="fa-thumbs">
+                  <FontAwesomeIcon
+                    id="fa-thumbs-up"
+                    icon={faThumbsUp}
+                    color="gray"
+                  />{" "}
+                  <FontAwesomeIcon
+                    id="fa-thumbs-down"
+                    icon={faThumbsDown}
+                    color="gray"
                   />
                 </div>
               </div>

@@ -1,0 +1,2 @@
+export const CHANGE_MOVIE_LIST = "CHANGE_MOVIE_LIST";
+export const GET_MOVIE_LIST = "GET_MOVIE_LIST";
