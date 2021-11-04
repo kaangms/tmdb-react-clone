@@ -26,24 +26,24 @@ const MovieCard = ({ filmSections }) => {
 
   return (
     <div className="container">
-      {filmSections.map((filmSection) => (
-        <div>
-          <TabBar tabNames={filmSection} />
+      {tabNames.map((tabName) => (
+        <div key={tabName.id}>
+          <TabBar tabName={tabName} />
           <div className="movie-card-list">
             {movies.map((movie) => (
-              <div class="movie-card">
+              <div key={movie.id} className="movie-card">
                 <img
-                  class="movie-image"
+                  className="movie-image"
                   src={IMAGE_BASE_URL + IMAGE_SIZE + movie.poster_path}
                   alt="img"
                 />
                 {/* <div
                   style={{ backgroundImage: `url(${Background})` }}
-                  class="movie-image"
+                  className="movie-image"
                 ></div> */}
-                <h4 class="movie-title">{movie.name}</h4>
+                <h4 className="movie-title">{movie.name}</h4>
                 <h6>{movie.first_air_date}</h6>
-                <div class="movie-rating">
+                <div className="movie-rating">
                   <CircularProgressbar
                     value={raiting(movie.vote_average)}
                     text={`${raiting(movie.vote_average)}%`}
@@ -91,3 +91,47 @@ function raiting(rate) {
   //10 üzerinden rate
   return rate * 10;
 }
+const tabNames = [
+  {
+    id: 1,
+    tabExplain: "What's Popular",
+    parents: [
+      {
+        name: "Streaming",
+      },
+      {
+        name: "On Tv",
+      },
+      {
+        name: "For Rent",
+      },
+      {
+        name: "In Theaters",
+      },
+    ],
+  },
+  {
+    id: 2,
+    tabExplain: "Free To Watch",
+    parents: [
+      {
+        name: "Movies",
+      },
+      {
+        name: "TV",
+      },
+    ],
+  },
+  {
+    id: 3,
+    tabExplain: "Trending",
+    parents: [
+      {
+        name: "Today",
+      },
+      {
+        name: "This Week",
+      },
+    ],
+  },
+];
