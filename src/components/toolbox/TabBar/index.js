@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
 import "./style.scss";
 const TabBar = ({ tabNames, getMovies }) => {
-  const [tabNamesState, setTabNamesState] = useState({ tabNames });
-
   // console.log(tabNamesState.columnName);
   return (
     <div className="tabbar-zone">
