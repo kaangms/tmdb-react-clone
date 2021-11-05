@@ -25,54 +25,58 @@ const MovieCard = ({ filmSections }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       {tabNames.map((tabName) => (
-        <div key={tabName.id}>
+        <div className="container-movie-card" key={tabName.id}>
           <TabBar tabName={tabName} />
           <div className="movie-card-list">
-            {movies.map((movie) => (
-              <div key={movie.id} className="movie-card">
-                <img
-                  className="movie-image"
-                  src={IMAGE_BASE_URL + IMAGE_SIZE + movie.poster_path}
-                  alt="img"
-                />
-                {/* <div
+            <div className="media discover scroller_wrap should_fade is_fading">
+              <div className="column_content flex scroller loaded">
+                {movies.map((movie) => (
+                  <div key={movie.id} className="movie-card">
+                    <img
+                      className="movie-image"
+                      src={IMAGE_BASE_URL + IMAGE_SIZE + movie.poster_path}
+                      alt="img"
+                    />
+                    {/* <div
                   style={{ backgroundImage: `url(${Background})` }}
                   className="movie-image"
                 ></div> */}
-                <h4 className="movie-title">{movie.name}</h4>
-                <h6>{movie.first_air_date}</h6>
-                <div className="movie-rating">
-                  <CircularProgressbar
-                    value={raiting(movie.vote_average)}
-                    text={`${raiting(movie.vote_average)}%`}
-                    background
-                    backgroundPadding={6}
-                    styles={buildStyles({
-                      backgroundColor: "black",
-                      textColor: "white",
-                      pathColor: RatingColor(
-                        parseInt(raiting(movie.vote_average))
-                      ),
-                      trailColor: "transparent",
-                    })}
-                  />
-                </div>
-                <div className="fa-thumbs">
-                  <FontAwesomeIcon
-                    id="fa-thumbs-up"
-                    icon={faThumbsUp}
-                    color="gray"
-                  />{" "}
-                  <FontAwesomeIcon
-                    id="fa-thumbs-down"
-                    icon={faThumbsDown}
-                    color="gray"
-                  />
-                </div>
+                    <h4 className="movie-title">{movie.name}</h4>
+                    <h6>{movie.first_air_date}</h6>
+                    <div className="movie-rating">
+                      <CircularProgressbar
+                        value={raiting(movie.vote_average)}
+                        text={`${raiting(movie.vote_average)}%`}
+                        background
+                        backgroundPadding={6}
+                        styles={buildStyles({
+                          backgroundColor: "black",
+                          textColor: "white",
+                          pathColor: RatingColor(
+                            parseInt(raiting(movie.vote_average))
+                          ),
+                          trailColor: "transparent",
+                        })}
+                      />
+                    </div>
+                    <div className="fa-thumbs">
+                      <FontAwesomeIcon
+                        id="fa-thumbs-up"
+                        icon={faThumbsUp}
+                        color="gray"
+                      />{" "}
+                      <FontAwesomeIcon
+                        id="fa-thumbs-down"
+                        icon={faThumbsDown}
+                        color="gray"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       ))}
