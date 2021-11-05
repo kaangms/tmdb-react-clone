@@ -3,7 +3,7 @@ import "./style.scss";
 
 const HeaderBottom = () => {
   return (
-    <div className="container">
+    <div>
       <div className="background-img">
         <h1>Welcome</h1>
         <h2>

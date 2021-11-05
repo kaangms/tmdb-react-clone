@@ -4,10 +4,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  scrollbar-width: thin;
 }
 
 body {
   font-family: "Lato", sans-serif;
+
+  overflow-y: scroll;
+  transition: height 0.5s linear;
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 10px;
+    // margin: 0;
+    // border: 1px solid #000000;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(219, 219, 219);
+    border-radius: 20px;
+  }
 }
 .container {
   max-width: 1400px;
