@@ -1,5 +1,5 @@
 import HeaderBottom from "../../components/HeaderBottom";
-import MovieCard from "../../components/MovieCard";
+import MovieList from "../../components/MovieList";
 import Nav from "../../components/Nav";
 
 // // const filmSections = [
@@ -82,7 +82,7 @@ function App() {
     <div>
       <Nav />
       <HeaderBottom />
-      <MovieCard />
+      <MovieList />
     </div>
   );
 }
