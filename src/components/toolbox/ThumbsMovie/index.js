@@ -1,7 +1,7 @@
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getThumbList } from "../../../store/actions/movieActons";
 import "./style.scss";
 const ThumbsMovie = ({ className, thumbsStatus, movieId }) => {

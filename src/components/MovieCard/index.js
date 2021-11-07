@@ -19,7 +19,7 @@ const MovieCard = ({ tabNameId }) => {
       )
       .then((response) => setMovies(response.data.results))
       .catch((error) => console.error(error));
-  }, [selectedTabNames]);
+  }, [selectedTabNames, tabNameId]);
 
   return (
     <div className="column_content flex scroller loaded">

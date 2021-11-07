@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React from "react";
-import { tabNames } from "../../store/reducers/tabNameReducer";
+import { initialState } from "../../store/reducers/tabNameReducer";
 import MovieCard from "../MovieCard";
 import TabBar from "../toolbox/TabBar";
 import "./style.scss";
@@ -8,7 +8,7 @@ import "./style.scss";
 const MovieList = () => {
   return (
     <div>
-      {tabNames.map((tabName) => (
+      {initialState.tabNames.map((tabName) => (
         <div className="container-movie-card" key={tabName.id}>
           <TabBar tabName={tabName} />
           <div className="movie-card-list">
