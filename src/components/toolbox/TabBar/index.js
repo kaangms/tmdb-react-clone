@@ -1,22 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { changeSelectedTabNameList } from "../../../store/actions/tabNameActions";
-import { initialState } from "../../../store/reducers/tabNameReducer";
 import "./style.scss";
 const TabBar = ({ tabName }) => {
   const dispatch = useDispatch();
 
-  const [selectedTabNames, setSelectedTabNames] = useState(
-    initialState.selectedTabNames
+  const selectedTabNames = useSelector(
+    (state) => state.tabNameReducer.selectedTabNames
   );
-
+  const [changedTabNames, setChangedTabNames] = useState();
+  useEffect(() => {}, [changedTabNames]);
+  console.log("object");
   function handleChangeTab(tabName, id) {
-    changeSelectedTabNames(selectedTabNames, id, tabName);
-    let newSelectedTabNames = [...selectedTabNames];
-    console.log(newSelectedTabNames);
-    setSelectedTabNames(newSelectedTabNames);
-    dispatch(changeSelectedTabNameList(newSelectedTabNames));
+    dispatch(changeSelectedTabNameList({ tabName, id }));
+    setChangedTabNames([...selectedTabNames]);
   }
   return (
     <div className="tabbar-zone">
@@ -41,10 +39,3 @@ const TabBar = ({ tabName }) => {
   );
 };
 export default TabBar;
-function changeSelectedTabNames(selectedTabNames, id, tabName) {
-  selectedTabNames.splice(
-    selectedTabNames.indexOf(selectedTabNames[id - 1]),
-    1,
-    tabName
-  );
-}

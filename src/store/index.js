@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import getMoviesReducer from "./reducers/getMoviesReducer";
+import moviesReducer from "./reducers/moviesReducer";
 import tabNameReducer from "./reducers/tabNameReducer";
 
 const rootReducer = combineReducers({
-  getMoviesReducer,
+  moviesReducer,
   tabNameReducer,
 });
 export default rootReducer;

@@ -1,45 +1,58 @@
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getThumbList } from "../../../store/actions/movieActons";
-import "./style.scss";
-const ThumbsMovie = ({ className, thumbsStatus, movieId }) => {
-  const [thumbList, setThumbList] = useState([]);
-  const dispatch = useDispatch();
-  // const selectedTabNames = useSelector((state) => state.tabNameReducer);
+import { useEffect } from "react";
+// import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setToThumbList } from "../../../store/actions/movieActons";
 
-  useEffect(() => {}, []);
-  function thumbAction(status) {
-    let newThumbList = thumbList.push(status + movieId);
-    setThumbList(newThumbList);
-    dispatch(getThumbList(thumbList));
+import "./style.scss";
+const ThumbsMovie = ({ className, movieId }) => {
+  const dispatch = useDispatch();
+  const thumbList = useSelector((state) => state.moviesReducer.thumbList);
+  useEffect(() => {}, [dispatch, thumbList]);
+  function thumbsColor(movieId) {
+    var movie = thumbList.find((m) => m.id === movieId);
+
+    if (movie === undefined) {
+      return "gray";
+    }
+    if (movie.status === "up") return "blue";
+    else if (movie.status === "down") return "red";
+    return "gray";
+  }
+  function getMovieStatus(movieId) {
+    var movie = thumbList.find((m) => m.id === movieId);
+    if (movie === undefined) {
+      return undefined;
+    }
+    return movie.status;
+  }
+  function thumbAction(status, movieId) {
+    // console.log(thumbList.find((m)));
+    var movie = { id: movieId, status: status };
+    dispatch(setToThumbList(movie));
   }
   return (
     <div className={className}>
-      {(thumbsStatus === "true" || thumbsStatus === undefined) && (
+      {(getMovieStatus(movieId) === "up" ||
+        getMovieStatus(movieId) === undefined) && (
         <FontAwesomeIcon
-          onClick={() => thumbAction("true")}
+          onClick={() => thumbAction("up", movieId)}
           id="fa-thumbs-up"
           icon={faThumbsUp}
-          color={thumbsColor(thumbsStatus)}
+          color={thumbsColor(movieId)}
         />
       )}
-      {(thumbsStatus === "false" || thumbsStatus === undefined) && (
+      {(getMovieStatus(movieId) === "down" ||
+        getMovieStatus(movieId) === undefined) && (
         <FontAwesomeIcon
-          onClick={() => thumbAction("false")}
+          onClick={() => thumbAction("down", movieId)}
           id="fa-thumbs-down"
           icon={faThumbsDown}
-          color={thumbsColor(thumbsStatus)}
+          color={thumbsColor(movieId)}
         />
       )}
     </div>
   );
 };
 export default ThumbsMovie;
-
-function thumbsColor(thumbsStatus) {
-  if (thumbsStatus === undefined) return "gray";
-  else if (thumbsStatus === "true") return "blue";
-  else if (thumbsStatus === "false") return "red";
-}
