@@ -25,7 +25,5 @@ Proje aşağıda ki dosyalardan oluşmaktadır.
 
 ---------------------------------------------------------------------
 ### `npm start` işlemi
-Projeyi çalıştırmadan önce 'npm i' ile kullanılacak paketleri çekiyorsunuz.
-Sonrasında npm start ile proje çalışacaktır.
 git clone -> npm i -> npm start
 
