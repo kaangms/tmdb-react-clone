@@ -43,3 +43,51 @@
     }
   }
 }
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+  .tabbar-zone {
+    padding: 15px 15px 0 15px;
+
+    .column-header {
+      display: block;
+      align-items: center;
+
+      h4 {
+        font-size: 12px;
+      }
+      .filmSection-parents {
+        border: 1px solid black;
+        display: flex;
+        width: 350px;
+        height: 30px;
+        align-items: center;
+        border-radius: 50px;
+        text-align: center;
+        span {
+          display: inline-block;
+          width: 25%;
+          height: 100%;
+          cursor: pointer;
+          padding-top: 3px;
+          font-weight: 600;
+          color: black;
+          margin-right: 20px;
+          a {
+            font-size: 12px;
+          }
+        }
+
+        span.active {
+          background-color: #032541;
+          border-radius: 50px;
+          color: white;
+          a {
+            background: linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

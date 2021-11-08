@@ -31,3 +31,24 @@ nav {
     }
   }
 }
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+  nav {
+    height: 40px;
+    padding: 0;
+
+    .nav-link {
+      padding: 0 10 0 10;
+    }
+    ul {
+      font-size: 11px;
+      align-items: center;
+      margin-top: 10px;
+      .logo {
+        background: url("../../images/nav/logo.svg") no-repeat center
+          center/fill;
+        height: 25px;
+        width: 195px;
+      }
+    }
+  }
+}

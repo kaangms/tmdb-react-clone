@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 // import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setToThumbList } from "../../../store/actions/movieActons";
+import {
+  addToThumbList,
+  removeFromThumbList,
+} from "../../../store/actions/movieActons";
 
 import "./style.scss";
 const ThumbsMovie = ({ className, movieId }) => {
@@ -27,17 +30,20 @@ const ThumbsMovie = ({ className, movieId }) => {
     }
     return movie.status;
   }
-  function thumbAction(status, movieId) {
-    // console.log(thumbList.find((m)));
-    var movie = { id: movieId, status: status };
-    dispatch(setToThumbList(movie));
-  }
+  function thumbAction(changeStatus, movieId, currentStatus) {
+    if (currentStatus === undefined) {
+      const movie = { id: movieId, status: changeStatus };
+      dispatch(addToThumbList(movie));
+    } else if (currentStatus === "up" || currentStatus === "down") {
+      dispatch(removeFromThumbList({ id: movieId }));
+    }
+  } //var movie = { id: movieId, status: status };
   return (
     <div className={className}>
       {(getMovieStatus(movieId) === "up" ||
         getMovieStatus(movieId) === undefined) && (
         <FontAwesomeIcon
-          onClick={() => thumbAction("up", movieId)}
+          onClick={() => thumbAction("up", movieId, getMovieStatus(movieId))}
           id="fa-thumbs-up"
           icon={faThumbsUp}
           color={thumbsColor(movieId)}
@@ -46,7 +52,7 @@ const ThumbsMovie = ({ className, movieId }) => {
       {(getMovieStatus(movieId) === "down" ||
         getMovieStatus(movieId) === undefined) && (
         <FontAwesomeIcon
-          onClick={() => thumbAction("down", movieId)}
+          onClick={() => thumbAction("down", movieId, getMovieStatus(movieId))}
           id="fa-thumbs-down"
           icon={faThumbsDown}
           color={thumbsColor(movieId)}

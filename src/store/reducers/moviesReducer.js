@@ -2,21 +2,27 @@ import * as actionTypes from "../actions/movieActons";
 
 export default function moviesReducer(state = initialState, action) {
   switch (action.type) {
-    case actionTypes.SET_TO_THUMB_LIST:
-      let movie = initialState.thumbList.find(
+    case actionTypes.ADD_TO_THUMB_LIST:
+      var movie = initialState.thumbList.find(
         (m) => m.id === action.payload.id
       );
+      console.log(state);
       if (movie !== undefined) {
-        initialState.thumbList = initialState.thumbList.filter(
-          (m) => m.id !== action.payload.id
-        );
+        return {
+          ...state,
+          thumbList: [...initialState.thumbList],
+        };
       } else {
-        initialState.thumbList.push({
-          id: action.payload.id,
-          status: action.payload.status,
-        });
+        return {
+          ...state,
+          thumbList: [...state.thumbList, action.payload],
+        };
       }
-      return state;
+    case actionTypes.REMOVE_FROM_THUMB_LIST:
+      return {
+        ...state,
+        thumbList: state.thumbList.filter((m) => m.id !== action.payload.id),
+      };
 
     default:
       return state;

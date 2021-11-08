@@ -10,7 +10,7 @@ export default function tabNameReducer(state = initialState, action) {
         1,
         action.payload.tabName
       );
-      return { ...state };
+      return { ...state, selectedTabNames: [...initialState.selectedTabNames] };
     // case actionTypes.GET_SELECTED_TAB_NAME:
     //   return action.payload;
     default:
